@@ -6,13 +6,13 @@ export const nap = () => {
     }
 }
 
-export const nap = () => {
+export const eat = () => {
     return {
         type: ACTION_EAT
     }
 }
 
-export const nap = () => {
+export const play = () => {
     return {
         type: ACTION_PLAY
     }
