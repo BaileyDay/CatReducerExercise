@@ -1,23 +1,25 @@
-import React from "react";
-import {connect} from "react-redux";
-import { eat, nap, play } from "../redux/actions"
 
-const Activity = ({ activity, eat, nap, play }) => (
+import React from "react";
+import { connect } from "react-redux";
+import { setActivity } from "../redux/actions";
+
+import UpdateName from "./UpdateName";
+
+const Activity = ({activity, name, setActivity}) => (
     <>
-    <h1>What is the cat doing?</h1>
-        <p> The cat is {activity}</p>
-    <button onClick={() => eat()}>Eating</button>
-        <button onClick={() => nap()}>Napping</button>
-        <button onClick={() => play()}>Playing</button>
+        <h1>What is the cat doing?</h1>
+        <p>{name} is {activity}</p>
+        <button onClick={() => setActivity('eating')}>Eating</button>
+        <button onClick={() => setActivity('playing')}>Playing</button>
+        <button onClick={() => setActivity('napping')}>Napping</button>
+        <UpdateName />
     </>
 )
-
 const mapStateToProps = state => {
-    const {activity} = state;
+    const { activity } = state;
     return activity;
 }
-
 export default connect(
-    mapStateToProps,
-    { eat, nap, play }
-    )(Activity);
+    mapStateToProps, // mapStateToProps - What do I want?
+    { setActivity } // mapDispatchToProps - What do I want to do?
+)(Activity);
